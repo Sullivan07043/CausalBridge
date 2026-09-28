@@ -81,6 +81,16 @@ To uninstall, remove `~/.local/lib/causalbridge` and
        --mode text --api-base https://api.openai.com/v1 --api-model gpt-4o --out result
    ```
 
+5. Or use the graphical interface in your browser:
+
+   ```sh
+   causalbridge gui
+   ```
+
+   It names variables, trains profiles and shows each result as a graph. On a
+   remote GPU machine, forward the port first:
+   `ssh -L 8765:127.0.0.1:8765 <user>@<gpu machine>`.
+
 The [examples](examples/) folder also has a Big Five personality test example
 for the joint task. The [project page](https://sullivan07043.github.io/CausalBridge/examples.html)
 shows both examples.
@@ -116,7 +126,7 @@ causalbridge train --profile survey --backbone <another model>      # fit a new 
 
 ## Documentation
 
-The [manual](docs/manual.md) describes every command, the input formats, the
+The [manual](docs/manual.md) describes every command, the interface, the input formats, the
 discovery methods, the parameters, the API formats, training, and what data
 leaves your machine.
 

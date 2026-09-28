@@ -1,6 +1,6 @@
 # CausalBridge manual
 
-Version 0.1.1.
+Version 0.2.0.
 
 ## Contents
 
@@ -132,6 +132,50 @@ against its SHA256 sum.
 
 Trains a profile, or fits new backbones to a profile. See section 10.
 
+### `causalbridge gui`
+
+Starts the graphical interface, a local web page, and prints its address.
+
+```sh
+causalbridge gui
+```
+
+Open the printed address in a browser. On a remote GPU machine, forward the
+port from your own computer first, then open the address there:
+
+```sh
+ssh -L 8765:127.0.0.1:8765 <user>@<gpu machine>
+```
+
+| option | default | meaning |
+|---|---|---|
+| `--port N` | `8765` | local port; the next free port if it is taken |
+| `--no-browser` | | print the address only |
+| `--profile-dir DIR`, `--cache DIR`, `--hf-cache DIR` | as above | passed to every run |
+
+The interface has four pages.
+
+- **Name**: choose the data file, type the known names in a table, choose
+  discovery or your graph file, the task, the language model or a hosted API,
+  the GPU and the output folder. The page shows the equivalent command before
+  you start the run.
+- **Train**: train a profile from a folder of datasets (section 10), or fit a
+  language model to a profile. The page checks the datasets folder first.
+- **Runs**: the progress, the log and the command of each run. A finished
+  naming run shows each named variable with its causal neighbors, the whole
+  graph, a table of all names, and the evidence. You can also open the output
+  folder of any earlier run.
+- **Setup**: the GPUs, the profiles with a download button for the example
+  profiles, and the language models in the Hugging Face cache with a
+  compatibility check.
+
+The interface listens on 127.0.0.1 only. The address holds a token that
+changes each time the interface starts, so other users of a shared machine
+cannot use it. Each run is a separate `causalbridge` process: it continues
+when you close the browser or stop the interface with Ctrl+C, and the
+interface shows it again when it starts. An API key typed into the Name page
+is used for that run only and is not saved.
+
 ## 4. Input files
 
 All input files are CSV files with a header row.
@@ -196,8 +240,8 @@ run used.
 
 **`run.json`**: the version, the task, the data kind, the mode, the backbone
 or hosted model, the profile, the source of the graph, the number of dropped
-rows, the parameters, the time of each stage, and the checksum of the
-profile's encoder update.
+rows, the parameters, the time of each stage, the names you gave, and the
+checksum of the profile's encoder update.
 
 ## 6. Discovery methods
 
@@ -362,6 +406,7 @@ finds it.
 | `~/.local/bin/causalbridge` | the command |
 | `~/.cache/causalbridge/profiles/<name>/` | downloaded and trained profiles (`--profile-dir`) |
 | `~/.cache/causalbridge` | working files of a run (`--cache`) |
+| `~/.cache/causalbridge/gui/jobs/` | command, log and exit code of each run started in the interface |
 | `~/.cache/huggingface/hub` | backbones and the sentence encoder (`--hf-cache`) |
 
 The model files of a profile are encrypted. Only CausalBridge reads them.
