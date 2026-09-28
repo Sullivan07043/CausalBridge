@@ -139,13 +139,11 @@ cat <<EOF
 Installed CausalBridge ${VER}: ${BIN_DIR}/causalbridge
 
 Next steps:
-  1. Check the installation:       causalbridge check
-  2. Get the example profiles:     causalbridge download
-  3. Name the columns of a table.
-     With a local model (download it yourself, for example Qwen/Qwen3-4B-Instruct-2507):
-       causalbridge name data.csv --names names.csv --backbone Qwen/Qwen3-4B-Instruct-2507 --out result
-     With a hosted API (text mode):
-       export OPENAI_API_KEY=...
-       causalbridge name data.csv --names names.csv --mode text --api-model gpt-4o --out result
-  Help: causalbridge --help, and causalbridge <command> --help
+  1. Download a language model, for example Qwen/Qwen3-4B-Instruct-2507:
+       ${LIB}/current/bin/hf download Qwen/Qwen3-4B-Instruct-2507
+     Or skip this step and use a hosted API.
+  2. Start CausalBridge and open it in your browser:
+       causalbridge activate
+     Open it again: causalbridge gui    Stop it: causalbridge exit
+  Command line: causalbridge --help
 EOF

@@ -1,6 +1,6 @@
 # CausalBridge manual
 
-Version 0.2.0.
+Version 0.2.1.
 
 ## Contents
 
@@ -132,26 +132,42 @@ against its SHA256 sum.
 
 Trains a profile, or fits new backbones to a profile. See section 10.
 
-### `causalbridge gui`
+### `causalbridge activate`, `causalbridge gui`, `causalbridge exit`
 
-Starts the graphical interface, a local web page, and prints its address.
+`activate` starts CausalBridge in the background, a local web page, and opens
+it in your browser. The terminal is free again at once.
 
 ```sh
-causalbridge gui
+causalbridge activate
 ```
 
-Open the printed address in a browser. On a remote GPU machine, forward the
-port from your own computer first, then open the address there:
+On a desktop, and in a terminal of VS Code connected to the GPU machine, the
+page opens in your browser. Over ssh, forward the port from your own computer
+first, then open the printed address there. The command prints this line with
+your user and machine names:
 
 ```sh
 ssh -L 8765:127.0.0.1:8765 <user>@<gpu machine>
 ```
 
-| option | default | meaning |
+If port 8765 is taken, CausalBridge uses the next free port. Forward the port
+in the printed address.
+
+CausalBridge keeps running when you close the browser. `gui` opens it again.
+`exit` stops it. If a run is in progress, `exit` asks whether to stop the run
+as well.
+
+```sh
+causalbridge gui
+causalbridge exit
+```
+
+| command and option | default | meaning |
 |---|---|---|
-| `--port N` | `8765` | local port; the next free port if it is taken |
-| `--no-browser` | | print the address only |
-| `--profile-dir DIR`, `--cache DIR`, `--hf-cache DIR` | as above | passed to every run |
+| `activate --port N` | `8765` | local port; the next free port if it is taken |
+| `activate --no-browser`, `gui --no-browser` | | print the address, do not open a browser |
+| `activate --profile-dir DIR`, `--cache DIR`, `--hf-cache DIR` | as above | passed to every run |
+| `exit --yes` | | stop runs in progress without asking |
 
 The interface has four pages.
 
@@ -169,12 +185,11 @@ The interface has four pages.
   profiles, and the language models in the Hugging Face cache with a
   compatibility check.
 
-The interface listens on 127.0.0.1 only. The address holds a token that
-changes each time the interface starts, so other users of a shared machine
-cannot use it. Each run is a separate `causalbridge` process: it continues
-when you close the browser or stop the interface with Ctrl+C, and the
-interface shows it again when it starts. An API key typed into the Name page
-is used for that run only and is not saved.
+CausalBridge listens on 127.0.0.1 only. The address holds a token that
+changes each time `activate` starts it, so other users of a shared machine
+cannot use it. Each run is a separate `causalbridge` process and continues
+when you close the browser. An API key typed into the Name page is used for
+that run only and is not saved.
 
 ## 4. Input files
 
@@ -406,7 +421,7 @@ finds it.
 | `~/.local/bin/causalbridge` | the command |
 | `~/.cache/causalbridge/profiles/<name>/` | downloaded and trained profiles (`--profile-dir`) |
 | `~/.cache/causalbridge` | working files of a run (`--cache`) |
-| `~/.cache/causalbridge/gui/jobs/` | command, log and exit code of each run started in the interface |
+| `~/.cache/causalbridge/gui/` | state of the running interface, and the command, log and exit code of each run started in it |
 | `~/.cache/huggingface/hub` | backbones and the sentence encoder (`--hf-cache`) |
 
 The model files of a profile are encrypted. Only CausalBridge reads them.

@@ -30,30 +30,103 @@
 <section id="start" class="pagehead">
   <div class="wrap">
     <div class="kicker">Get started</div>
-    <h1>Four commands to your first names</h1>
+    <h1>From install to your first names</h1>
     <p class="sub">You need Linux on x86_64 and an NVIDIA GPU with its driver. The installer puts CausalBridge in its own environment and does not touch your Python.</p>
-    <div class="start">
-      <div class="card">
-        <h3><span>1</span>Install</h3>
-        <p>Downloads CausalBridge and installs the <code>causalbridge</code> command.</p>
-        <div class="cmd">curl -fsSL https://raw.githubusercontent.com/Sullivan07043/CausalBridge/main/install.sh | sh</div>
-      </div>
-      <div class="card">
-        <h3><span>2</span>Check</h3>
-        <p>Shows the GPU, the profiles and whether your language model is compatible.</p>
-        <div class="cmd">causalbridge check</div>
-      </div>
-      <div class="card">
-        <h3><span>3</span>Get a language model</h3>
-        <p>Download the model you want. Or skip this step and use a hosted API.</p>
-        <div class="cmd">~/.local/lib/causalbridge/current/bin/hf download Qwen/Qwen3-4B-Instruct-2507</div>
-      </div>
-      <div class="card">
-        <h3><span>4</span>Name</h3>
-        <p>Give the data and the names you know. The first run downloads the example profile.</p>
-        <div class="cmd">causalbridge name data.csv --names names.csv --out result</div>
+    <div class="tour" id="tour" tabindex="-1">
+      <div class="tour-rail" role="tablist"><button type="button" role="tab" data-i="0"><span>01</span>Install</button><button type="button" role="tab" data-i="1"><span>02</span>Language model</button><button type="button" role="tab" data-i="2"><span>03</span>Activate</button><button type="button" role="tab" data-i="3"><span>04</span>Data and names</button><button type="button" role="tab" data-i="4"><span>05</span>Graph and model</button><button type="button" role="tab" data-i="5"><span>06</span>Your domain</button></div>
+      <div class="tour-view"><div class="tour-track">
+        <article class="tslide" data-i="0" aria-label="Step 1 of 6">
+          <div class="tslide-text">
+            <div class="tslide-no">01<small>/ 06</small></div>
+            <h3>Install</h3>
+            <p>Downloads CausalBridge and installs the <code>causalbridge</code> command in its own environment.</p>
+            <div class="tcmd"><code>curl -fsSL https://raw.githubusercontent.com/Sullivan07043/CausalBridge/main/install.sh | sh</code><button class="copy" data-copy="curl -fsSL https://raw.githubusercontent.com/Sullivan07043/CausalBridge/main/install.sh | sh">Copy</button></div>
+          </div>
+          <div class="tslide-visual"><div class="term"><div class="bar"><i></i><i></i><i></i><span>Terminal</span></div><pre><b class="pr">$</b> curl -fsSL https://raw.githubusercontent.com/Sullivan07043/CausalBridge/main/install.sh | sh
+Getting causalbridge-0.2.1-cp312-cp312-linux_x86_64.whl
+Checking the wheel against the published sha256
+Creating the environment (Python 3.12)
+Installing CausalBridge 0.2.1 and its dependencies (PyTorch is large)
+
+<b class="tok">Installed CausalBridge 0.2.1: /home/you/.local/bin/causalbridge</b>
+
+Next steps:
+  1. Download a language model, for example Qwen/Qwen3-4B-Instruct-2507:
+       /home/you/.local/lib/causalbridge/current/bin/hf download Qwen/Qwen3-4B-Instruct-2507
+     Or skip this step and use a hosted API.
+  2. Start CausalBridge and open it in your browser:
+       causalbridge activate
+     Open it again: causalbridge gui    Stop it: causalbridge exit
+  Command line: causalbridge --help</pre></div></div>
+        </article>
+        <article class="tslide" data-i="1" aria-label="Step 2 of 6">
+          <div class="tslide-text">
+            <div class="tslide-no">02<small>/ 06</small></div>
+            <h3>Get a language model</h3>
+            <p>Download the model you want. CausalBridge never downloads one for you. Or skip this step and use a hosted API.</p>
+            <div class="tcmd"><code>~/.local/lib/causalbridge/current/bin/hf download Qwen/Qwen3-4B-Instruct-2507</code><button class="copy" data-copy="~/.local/lib/causalbridge/current/bin/hf download Qwen/Qwen3-4B-Instruct-2507">Copy</button></div>
+          </div>
+          <div class="tslide-visual"><div class="term"><div class="bar"><i></i><i></i><i></i><span>Terminal</span></div><pre><b class="pr">$</b> ~/.local/lib/causalbridge/current/bin/hf download Qwen/Qwen3-4B-Instruct-2507
+Fetching 13 files: 100%|██████████| 13/13
+<b class="tok">/home/you/.cache/huggingface/hub/models--Qwen--Qwen3-4B-Instruct-2507/snapshots/cdbee75f17c01a7cc42f958dc650907174af0554</b></pre></div></div>
+        </article>
+        <article class="tslide" data-i="2" aria-label="Step 3 of 6">
+          <div class="tslide-text">
+            <div class="tslide-no">03<small>/ 06</small></div>
+            <h3>Activate</h3>
+            <p>Starts CausalBridge and opens it in your browser. If you close the browser, <code>causalbridge gui</code> opens it again. <code>causalbridge exit</code> stops CausalBridge.</p>
+            <div class="tcmd"><code>causalbridge activate</code><button class="copy" data-copy="causalbridge activate">Copy</button></div><p class="small">Over ssh, forward the port from your computer first:</p><div class="tcmd"><code>ssh -L 8765:127.0.0.1:8765 &lt;user&gt;@&lt;gpu machine&gt;</code><button class="copy" data-copy="ssh -L 8765:127.0.0.1:8765 &lt;user&gt;@&lt;gpu machine&gt;">Copy</button></div>
+          </div>
+          <div class="tslide-visual"><div class="term"><div class="bar"><i></i><i></i><i></i><span>Terminal</span></div><pre><b class="pr">$</b> causalbridge activate
+CausalBridge 0.2.1 is running.
+Address: http://127.0.0.1:8765/?token=...
+<b class="tok">Opened it in your browser.</b>
+Open it again: causalbridge gui    Stop it: causalbridge exit
+
+<span class="dim"># the browser was closed</span>
+<b class="pr">$</b> causalbridge gui
+Address: http://127.0.0.1:8765/?token=...
+<b class="tok">Opened it in your browser.</b>
+Open it again: causalbridge gui    Stop it: causalbridge exit
+
+<b class="pr">$</b> causalbridge exit
+<b class="tok">CausalBridge stopped.</b></pre></div></div>
+        </article>
+        <article class="tslide" data-i="3" aria-label="Step 4 of 6">
+          <div class="tslide-text">
+            <div class="tslide-no">04<small>/ 06</small></div>
+            <h3>Give the data and the names you know</h3>
+            <p>Choose the data file. Type the names you know, or load a names file. CausalBridge names every column that you leave empty.</p>
+            
+          </div>
+          <div class="tslide-visual"><div class="win"><div class="bar"><i></i><i></i><i></i><span>127.0.0.1:8765</span></div><img src="img/gui-name.webp" width="1100" height="1153" alt="The Name page with a data preview and a table of column names, two of them empty" style="object-position: 50% 100%" loading="lazy"></div></div>
+        </article>
+        <article class="tslide" data-i="4" aria-label="Step 5 of 6">
+          <div class="tslide-text">
+            <div class="tslide-no">05<small>/ 06</small></div>
+            <h3>Choose the graph and the model</h3>
+            <p>Discover the graph from the data, or give your own graph file. Choose a model on your GPU or a hosted API, then run.</p>
+            
+          </div>
+          <div class="tslide-visual"><div class="win"><div class="bar"><i></i><i></i><i></i><span>127.0.0.1:8765</span></div><img src="img/gui-graph.webp" width="1100" height="718" alt="The graph and language model settings of the Name page" style="object-position: 50% top" loading="lazy"></div></div>
+        </article>
+        <article class="tslide" data-i="5" aria-label="Step 6 of 6">
+          <div class="tslide-text">
+            <div class="tslide-no">06<small>/ 06</small></div>
+            <h3>Train for your domain</h3>
+            <p>Choose a folder of fully named datasets. CausalBridge checks the folder and trains a profile on your GPU. Training continues when you close the browser.</p>
+            
+          </div>
+          <div class="tslide-visual"><div class="win"><div class="bar"><i></i><i></i><i></i><span>127.0.0.1:8765</span></div><img src="img/gui-train.webp" width="1100" height="944" alt="The Train page with a checked datasets folder and the profile settings" style="object-position: 50% top" loading="lazy"></div></div>
+        </article>
+      </div></div>
+      <div class="tour-nav">
+        <button type="button" class="tour-btn prev" aria-label="Previous step">&larr;</button>
+        <span class="tour-count"></span>
+        <button type="button" class="tour-btn next" aria-label="Next step">&rarr;</button>
       </div>
     </div>
+    <p class="note">Every page of the interface shows the equivalent command. The <a href="https://github.com/Sullivan07043/CausalBridge/blob/main/docs/manual.md">manual</a> describes all commands for use without the interface.</p>
   </div>
 </section>
 
@@ -64,7 +137,7 @@
     <p class="sub">Commands, input formats, discovery methods, parameters, hosted APIs, training your own profile, and what data leaves your machine.</p>
     <div class="docs">
       <a class="card doc" href="https://github.com/Sullivan07043/CausalBridge/blob/main/docs/manual.md"><b>Manual</b><span>The full reference for every command and file.</span></a>
-      <a class="card doc" href="https://github.com/Sullivan07043/CausalBridge/tree/main/examples"><b>Examples</b><span>A vehicle drive and a questionnaire, ready to run.</span></a>
+      <a class="card doc" href="https://github.com/Sullivan07043/CausalBridge/tree/main/examples"><b>Examples</b><span>A vehicle drive and the Big Five test, ready to run.</span></a>
       <a class="card doc" href="https://github.com/Sullivan07043/CausalBridge/blob/main/docs/manual.md#10-training-a-profile"><b>Training</b><span>Build a profile for your domain or fit a new model.</span></a>
       <a class="card doc" href="https://github.com/Sullivan07043/CausalBridge/releases"><b>Releases</b><span>Wheels, SHA256 sums and release notes.</span></a>
     </div>
@@ -94,5 +167,6 @@
   </div>
 </footer>
 <script src="site.js"></script>
+<script src="tour.js"></script>
 </body>
 </html>

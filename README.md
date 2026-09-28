@@ -49,51 +49,58 @@ To uninstall, remove `~/.local/lib/causalbridge` and
 
 ## Quick start
 
-1. Check the installation:
-
-   ```sh
-   causalbridge check
-   ```
-
-2. Download a language model, for example Qwen3-4B-Instruct-2507, with the
-   `hf` command that comes with CausalBridge:
+1. Download a language model, for example Qwen3-4B-Instruct-2507, with the
+   `hf` command that comes with CausalBridge. Or skip this step and use a
+   hosted API.
 
    ```sh
    ~/.local/lib/causalbridge/current/bin/hf download Qwen/Qwen3-4B-Instruct-2507
    ```
 
-3. Name the two unnamed channels of the vehicle example:
+2. Start CausalBridge:
+
+   ```sh
+   causalbridge activate
+   ```
+
+   On a desktop or in a VS Code terminal, CausalBridge opens in your browser.
+   Over ssh, forward the port from your computer first, then open the address
+   that the command prints: `ssh -L 8765:127.0.0.1:8765 <user>@<gpu machine>`.
+   If you close the browser, `causalbridge gui` opens it again.
+   `causalbridge exit` stops CausalBridge.
+
+3. Name the two unnamed channels of the vehicle example. Clone this
+   repository, then on the Name page choose `examples/vehicle/drive.csv`,
+   load `names.csv`, choose "Use my graph file" with `graph.csv`, and run.
 
    ```sh
    git clone https://github.com/Sullivan07043/CausalBridge
-   cd CausalBridge/examples/vehicle
-   causalbridge name drive.csv --names names.csv --graph graph.csv --data timeseries --out result
    ```
 
    The first run downloads the `sensor` example profile (233 MB) and the
-   sentence encoder. The names are in `result/names.json`.
-
-4. Or use a hosted model instead of a local one:
-
-   ```sh
-   export OPENAI_API_KEY=...
-   causalbridge name drive.csv --names names.csv --graph graph.csv --data timeseries \
-       --mode text --api-base https://api.openai.com/v1 --api-model gpt-4o --out result
-   ```
-
-5. Or use the graphical interface in your browser:
-
-   ```sh
-   causalbridge gui
-   ```
-
-   It names variables, trains profiles and shows each result as a graph. On a
-   remote GPU machine, forward the port first:
-   `ssh -L 8765:127.0.0.1:8765 <user>@<gpu machine>`.
+   sentence encoder.
 
 The [examples](examples/) folder also has a Big Five personality test example
 for the joint task. The [project page](https://sullivan07043.github.io/CausalBridge/examples.html)
 shows both examples.
+
+### Command line
+
+Every page of the interface shows the equivalent command. The same run from
+the command line:
+
+```sh
+cd CausalBridge/examples/vehicle
+causalbridge name drive.csv --names names.csv --graph graph.csv --data timeseries --out result
+```
+
+With a hosted model instead of a local one:
+
+```sh
+export OPENAI_API_KEY=...
+causalbridge name drive.csv --names names.csv --graph graph.csv --data timeseries \
+    --mode text --api-base https://api.openai.com/v1 --api-model gpt-4o --out result
+```
 
 ## Inputs and outputs
 
