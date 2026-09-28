@@ -38,7 +38,8 @@ Inc. You may redistribute or modify the data under the terms of the CC-By-SA
 | source | file | license |
 |---|---|---|
 | comma2k19, comma.ai | `examples/vehicle/drive.csv` (one drive, 12 channels, resampled) | MIT (`licenses/comma2k19.txt`) |
-| Rosenberg Self-Esteem Scale responses, Open-Source Psychometrics Project | not redistributed; `examples/survey/get_data.sh` downloads them from openpsychometrics.org | terms of the source |
+| Big Five responses, Open-Source Psychometrics Project | not redistributed; `examples/bigfive/get_data.sh` downloads them from openpsychometrics.org | terms of the source |
+| item texts of the International Personality Item Pool (IPIP) | `examples/bigfive/names.csv` | public domain |
 
 ## Installed by the install script, not redistributed
 

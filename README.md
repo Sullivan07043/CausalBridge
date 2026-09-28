@@ -1,9 +1,13 @@
 # CausalBridge
 
-CausalBridge gives names to the unnamed variables of a measured system. You
-give it a table of measurements and the names of some of its columns. It finds
-the causal structure of the data, reads where each unnamed variable sits in
-that structure, and a language model writes a name for it.
+**Causality bridges the semantic gap.** CausalBridge is a framework that
+discovers the causal graph from measurements and expresses the unnamed
+variables as names.
+
+Given the measurements of a system and a few known names, it discovers the
+causal graph, solves for the embedding of every unnamed variable under the
+relations the graph implies, and expresses the embeddings as names through a
+frozen language model.
 
 - **Observed task**: name the unnamed columns of the table.
 - **Joint task**: name the unnamed columns and the hidden (latent) variables
@@ -58,12 +62,12 @@ To uninstall, remove `~/.local/lib/causalbridge` and
    ~/.local/lib/causalbridge/current/bin/hf download Qwen/Qwen3-4B-Instruct-2507
    ```
 
-3. Name the four unnamed channels of the vehicle example:
+3. Name the two unnamed channels of the vehicle example:
 
    ```sh
    git clone https://github.com/Sullivan07043/CausalBridge
    cd CausalBridge/examples/vehicle
-   causalbridge name drive.csv --names names.csv --data timeseries --out result
+   causalbridge name drive.csv --names names.csv --graph graph.csv --data timeseries --out result
    ```
 
    The first run downloads the `sensor` example profile (233 MB) and the
@@ -73,12 +77,13 @@ To uninstall, remove `~/.local/lib/causalbridge` and
 
    ```sh
    export OPENAI_API_KEY=...
-   causalbridge name drive.csv --names names.csv --data timeseries \
+   causalbridge name drive.csv --names names.csv --graph graph.csv --data timeseries \
        --mode text --api-base https://api.openai.com/v1 --api-model gpt-4o --out result
    ```
 
-The [examples](examples/) folder has a questionnaire example for the joint
-task as well.
+The [examples](examples/) folder also has a Big Five personality test example
+for the joint task. The [project page](https://sullivan07043.github.io/CausalBridge/examples.html)
+shows both examples.
 
 ## Inputs and outputs
 

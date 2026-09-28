@@ -4,6 +4,8 @@ steer,steering wheel angle
 wheel_fr,front right wheel speed
 wheel_rl,rear left wheel speed
 wheel_rr,rear right wheel speed
+acc_y,lateral acceleration
 acc_z,vertical acceleration
 gyro_x,roll rate
 gyro_y,pitch rate
+gyro_z,yaw rate
