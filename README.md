@@ -58,7 +58,7 @@ To uninstall, remove `~/.local/lib/causalbridge` and
    ~/.local/lib/causalbridge/current/bin/hf download Qwen/Qwen3-4B-Instruct-2507
    ```
 
-3. Name the six unnamed channels of the vehicle example:
+3. Name the four unnamed channels of the vehicle example:
 
    ```sh
    git clone https://github.com/Sullivan07043/CausalBridge

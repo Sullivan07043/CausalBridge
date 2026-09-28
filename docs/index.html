@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CausalBridge</title>
+<meta name="description" content="How causality bridges the semantic gap. CausalBridge reads a variable's semantics from how it acts on other variables.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='9' cy='23' r='6' fill='%230A1F44'/%3E%3Ccircle cx='23' cy='9' r='6' fill='%230FA98E'/%3E%3Cpath d='M13 19 L19 13' stroke='%230A1F44' stroke-width='2.5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="9" cy="23" r="6" fill="#0A1F44"/><circle cx="23" cy="9" r="6" fill="#0FA98E"/><path d="M13 19 L19 13" stroke="#0A1F44" stroke-width="2.5"/></svg>
+      CausalBridge
+    </a>
+    <div class="links">
+      <a href="examples.html">Examples</a>
+      <a href="start.html">Get started</a>
+      <a href="https://github.com/Sullivan07043/CausalBridge/blob/main/docs/manual.md">Docs</a>
+      <a class="gh" href="https://github.com/Sullivan07043/CausalBridge">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <h1 class="big"><span class="l"><span class="grad">Causality</span> bridges</span><span class="l">the <span class="grad">semantic gap</span></span></h1>
+      <p class="lede">A framework that discovers the causal graph from measurements, latent variables included, and expresses the unnamed variables as names through a language model.</p>
+      <div class="install">
+        <code><span class="p">$</span>curl -fsSL https://raw.githubusercontent.com/Sullivan07043/CausalBridge/main/install.sh | sh</code>
+        <button class="copy" data-copy="curl -fsSL https://raw.githubusercontent.com/Sullivan07043/CausalBridge/main/install.sh | sh">Copy</button>
+      </div>
+      <div class="cta">
+        <a class="btn primary" href="examples.html">See the examples</a>
+        <a class="btn ghost" href="start.html">Get started</a>
+      </div>
+      <div class="meta">Version 0.1.0 · Linux x86_64 · NVIDIA GPU · free for research and evaluation</div>
+    </div>
+
+  </div>
+</header>
+
+<section id="how">
+  <div class="wrap">
+    <div class="kicker">How it works</div>
+    <h2>From measurements to meanings</h2>
+    <p class="sub">CausalBridge bridges the gap between measurements and their meanings with causal structure. Given the measurements of a system and a few known names, it discovers the causal graph, solves for the embedding of every unnamed variable under the relations the graph implies, and expresses the embeddings as names through a frozen language model. The causal structure is recovered from the measurements alone, which may make it the one source of information free of bias from human knowledge.</p>
+    <div class="steps">
+      <div class="card step">
+        <h3>Discover</h3>
+        <p>CausalBridge recovers the causal graph from the measurements alone, before it reads any name, and adds a latent variable wherever the dependence among the observed variables requires one. You can also give the graph you know.</p>
+      </div>
+      <div class="card step">
+        <h3>Align</h3>
+        <p>It solves for the meaning of every unnamed variable under the relations that the graph implies: what causes it, what it causes and what it is independent of. The known names serve as anchors.</p>
+      </div>
+      <div class="card step">
+        <h3>Name</h3>
+        <p>A frozen language model expresses each solved meaning as a name. The structure supplies what human knowledge does not cover, and the language model supplies the words.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div><h2>See it name real variables</h2><p>A vehicle drive and a personality test, animated from cause to effect.</p></div>
+    <a class="btn primary" href="examples.html">See the examples</a>
+  </div>
+</section>
+
+<section class="alt" id="features">
+  <div class="wrap">
+    <div class="kicker">What it covers</div>
+    <h2>Made for real measurement data</h2>
+    <p class="sub">Questionnaires, robot logs, vehicle buses: any system where some variables have names and others do not.</p>
+    <div class="grid">
+      <div class="card feat">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0A1F44" stroke-width="2"><circle cx="6" cy="18" r="3"/><circle cx="18" cy="18" r="3"/><circle cx="12" cy="6" r="3" stroke="#0FA98E"/><path d="M10.5 8.5 7.5 15.5M13.5 8.5l3 7"/></svg></div>
+        <h3>Two tasks</h3>
+        <p>The observed task names unnamed columns. The joint task also names the hidden causes behind them.</p>
+      </div>
+      <div class="card feat">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0FA98E" stroke-width="2"><path d="M3 17l5-6 4 4 4-7 5 5"/><path d="M3 21h18" stroke="#0A1F44"/></svg></div>
+        <h3>Two kinds of data</h3>
+        <p>Independent rows such as questionnaire responses, and time series such as sensor logs.</p>
+      </div>
+      <div class="card feat">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0A1F44" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9z" stroke="#0FA98E"/></svg></div>
+        <h3>Your language model</h3>
+        <p>Any compatible open model on your GPU. CausalBridge never downloads a model for you, so you choose it.</p>
+      </div>
+      <div class="card feat">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0FA98E" stroke-width="2"><path d="M4 12a8 8 0 0 1 16 0"/><path d="M12 12v8M8 16l4 4 4-4" stroke="#0A1F44"/></svg></div>
+        <h3>Hosted APIs</h3>
+        <p>OpenAI, OpenRouter, DeepSeek and local vLLM servers through the OpenAI format, and Claude through the Anthropic format.</p>
+      </div>
+      <div class="card feat">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0A1F44" stroke-width="2"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><circle cx="12" cy="12" r="4" stroke="#0FA98E"/></svg></div>
+        <h3>Your domain</h3>
+        <p>Train a profile from your own datasets with one command, and fit new language models to any profile.</p>
+      </div>
+      <div class="card feat">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#0FA98E" stroke-width="2"><rect x="5" y="10" width="14" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3" stroke="#0A1F44"/></svg></div>
+        <h3>Runs on your machine</h3>
+        <p>Your data stays local. With a hosted model, only names and evidence lines go to the provider, never the data rows.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 CausalBridge Team</span>
+    <span><a href="https://github.com/Sullivan07043/CausalBridge">GitHub</a><a href="https://github.com/Sullivan07043/CausalBridge/blob/main/docs/manual.md">Manual</a><a href="https://github.com/Sullivan07043/CausalBridge/blob/main/LICENSE">License</a></span>
+  </div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>

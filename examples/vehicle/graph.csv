@@ -1,0 +1,10 @@
+source,target
+steer,gyro_z
+steer,acc_y
+acc_x,can_speed
+can_speed,wheel_fl
+can_speed,wheel_fr
+can_speed,wheel_rl
+can_speed,wheel_rr
+can_speed,gyro_z
+gyro_x,acc_y

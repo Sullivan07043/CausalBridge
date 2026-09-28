@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Get started - CausalBridge</title>
+<meta name="description" content="Install CausalBridge and name the unnamed variables of your data.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='9' cy='23' r='6' fill='%230A1F44'/%3E%3Ccircle cx='23' cy='9' r='6' fill='%230FA98E'/%3E%3Cpath d='M13 19 L19 13' stroke='%230A1F44' stroke-width='2.5'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="9" cy="23" r="6" fill="#0A1F44"/><circle cx="23" cy="9" r="6" fill="#0FA98E"/><path d="M13 19 L19 13" stroke="#0A1F44" stroke-width="2.5"/></svg>
+      CausalBridge
+    </a>
+    <div class="links">
+      <a href="examples.html">Examples</a>
+      <a href="start.html" class="on">Get started</a>
+      <a href="https://github.com/Sullivan07043/CausalBridge/blob/main/docs/manual.md">Docs</a>
+      <a class="gh" href="https://github.com/Sullivan07043/CausalBridge">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<section id="start" class="pagehead">
+  <div class="wrap">
+    <div class="kicker">Get started</div>
+    <h1>Four commands to your first names</h1>
+    <p class="sub">You need Linux on x86_64 and an NVIDIA GPU with its driver. The installer puts CausalBridge in its own environment and does not touch your Python.</p>
+    <div class="start">
+      <div class="card">
+        <h3><span>1</span>Install</h3>
+        <p>Downloads the release, checks its SHA256 sum and installs the <code>causalbridge</code> command.</p>
+        <div class="cmd">curl -fsSL https://raw.githubusercontent.com/Sullivan07043/CausalBridge/main/install.sh | sh</div>
+      </div>
+      <div class="card">
+        <h3><span>2</span>Check</h3>
+        <p>Shows the GPU, the profiles and whether your language model is compatible.</p>
+        <div class="cmd">causalbridge check</div>
+      </div>
+      <div class="card">
+        <h3><span>3</span>Get a language model</h3>
+        <p>Download the model you want. Or skip this step and use a hosted API.</p>
+        <div class="cmd">~/.local/lib/causalbridge/current/bin/hf download Qwen/Qwen3-4B-Instruct-2507</div>
+      </div>
+      <div class="card">
+        <h3><span>4</span>Name</h3>
+        <p>Give the data and the names you know. The first run downloads the example profile.</p>
+        <div class="cmd">causalbridge name data.csv --names names.csv --out result</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="docs">
+  <div class="wrap">
+    <div class="kicker">Documentation</div>
+    <h2>Everything in one manual</h2>
+    <p class="sub">Commands, input formats, discovery methods, parameters, hosted APIs, training your own profile, and what data leaves your machine.</p>
+    <div class="docs">
+      <a class="card doc" href="https://github.com/Sullivan07043/CausalBridge/blob/main/docs/manual.md"><b>Manual</b><span>The full reference for every command and file.</span></a>
+      <a class="card doc" href="https://github.com/Sullivan07043/CausalBridge/tree/main/examples"><b>Examples</b><span>A vehicle drive and a questionnaire, ready to run.</span></a>
+      <a class="card doc" href="https://github.com/Sullivan07043/CausalBridge/blob/main/docs/manual.md#10-training-a-profile"><b>Training</b><span>Build a profile for your domain or fit a new model.</span></a>
+      <a class="card doc" href="https://github.com/Sullivan07043/CausalBridge/releases"><b>Releases</b><span>Wheels, SHA256 sums and release notes.</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="license">
+  <div class="wrap">
+    <div class="license">
+      <div class="card">
+        <h3>License</h3>
+        <p>CausalBridge is proprietary software. It is free for research and evaluation. Commercial use needs a separate written license from the CausalBridge Team.</p>
+        <p><a href="https://github.com/Sullivan07043/CausalBridge/blob/main/LICENSE">Read the license</a> · <a href="https://github.com/Sullivan07043/CausalBridge/issues">Ask about a commercial license</a> · <a href="https://github.com/Sullivan07043/CausalBridge/blob/main/THIRD_PARTY_NOTICES.md">Third-party notices</a></p>
+      </div>
+      <div class="card">
+        <h3>Citation</h3>
+        <p>If you publish results obtained with CausalBridge, cite the CausalBridge paper. The reference will appear here when the paper is public.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 CausalBridge Team</span>
+    <span><a href="https://github.com/Sullivan07043/CausalBridge">GitHub</a><a href="https://github.com/Sullivan07043/CausalBridge/blob/main/docs/manual.md">Manual</a><a href="https://github.com/Sullivan07043/CausalBridge/blob/main/LICENSE">License</a></span>
+  </div>
+</footer>
+<script src="site.js"></script>
+</body>
+</html>
