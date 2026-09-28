@@ -356,3 +356,6 @@ footer a { color: var(--gray-700); margin-left: 20px; }
 }
 
 .pagehead .exgrid, .pagehead .start { margin-top: 28px; }
+.step:nth-child(1)::before { background: #9FDCCD; color: var(--ink); }
+.step:nth-child(2)::before { background: var(--ink); color: #fff; }
+.step:nth-child(3)::before { background: var(--rose); color: #fff; }
