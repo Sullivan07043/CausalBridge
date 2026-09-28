@@ -50,8 +50,9 @@ To uninstall, remove `~/.local/lib/causalbridge` and
 ## Quick start
 
 1. Download a language model, for example Qwen3-4B-Instruct-2507, with the
-   `hf` command that comes with CausalBridge. Or skip this step and use a
-   hosted API.
+   `hf` command that comes with CausalBridge. A model on your GPU supports
+   every feature. A hosted API supports text mode only, without the causal
+   prefix.
 
    ```sh
    ~/.local/lib/causalbridge/current/bin/hf download Qwen/Qwen3-4B-Instruct-2507

@@ -53,7 +53,8 @@ Installing CausalBridge 0.2.1 and its dependencies (PyTorch is large)
 Next steps:
   1. Download a language model, for example Qwen/Qwen3-4B-Instruct-2507:
        /home/you/.local/lib/causalbridge/current/bin/hf download Qwen/Qwen3-4B-Instruct-2507
-     Or skip this step and use a hosted API.
+     A model on your GPU supports every feature.
+     A hosted API supports text mode only, without the causal prefix.
   2. Start CausalBridge and open it in your browser:
        causalbridge activate
      Open it again: causalbridge gui    Stop it: causalbridge exit
@@ -63,7 +64,7 @@ Next steps:
           <div class="tslide-text">
             <div class="tslide-no">02<small>/ 07</small></div>
             <h3>Get a language model</h3>
-            <p>Download the model you want. CausalBridge never downloads one for you. Or skip this step and use a hosted API.</p>
+            <p>Download the model you want. CausalBridge never downloads one for you. A model on your GPU supports every feature. A hosted API supports text mode only, without the causal prefix.</p>
             <div class="tcmd"><code>~/.local/lib/causalbridge/current/bin/hf download Qwen/Qwen3-4B-Instruct-2507</code><button class="copy" data-copy="~/.local/lib/causalbridge/current/bin/hf download Qwen/Qwen3-4B-Instruct-2507">Copy</button></div>
           </div>
           <div class="tslide-visual"><div class="term"><div class="bar"><i></i><i></i><i></i><span>Terminal</span></div><pre><b class="pr">$</b> ~/.local/lib/causalbridge/current/bin/hf download Qwen/Qwen3-4B-Instruct-2507

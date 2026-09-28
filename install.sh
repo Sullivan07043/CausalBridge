@@ -141,7 +141,8 @@ Installed CausalBridge ${VER}: ${BIN_DIR}/causalbridge
 Next steps:
   1. Download a language model, for example Qwen/Qwen3-4B-Instruct-2507:
        ${LIB}/current/bin/hf download Qwen/Qwen3-4B-Instruct-2507
-     Or skip this step and use a hosted API.
+     A model on your GPU supports every feature.
+     A hosted API supports text mode only, without the causal prefix.
   2. Start CausalBridge and open it in your browser:
        causalbridge activate
      Open it again: causalbridge gui    Stop it: causalbridge exit
