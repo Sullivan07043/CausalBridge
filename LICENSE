@@ -1,0 +1,67 @@
+CausalBridge Software License
+
+Copyright (c) 2026 CausalBridge Team. All rights reserved.
+
+1. Definitions
+"Software" means the CausalBridge program files, compiled modules, model files
+(weights, concept banks, training examples), documentation and any update that
+CausalBridge Team provides. "You" means the person or entity that installs or
+uses the Software.
+
+2. License
+Subject to these terms, CausalBridge Team grants you a personal, non-exclusive,
+non-transferable, non-sublicensable and revocable license to install and run
+the Software for internal research and evaluation. Any commercial use requires
+a separate written license from CausalBridge Team.
+
+3. Restrictions
+You may not, and may not allow anyone else to:
+ a. copy the Software, except as needed to install and run it and one backup
+    copy;
+ b. redistribute, sell, rent, lease, lend or sublicense the Software, or offer
+    it to third parties as a hosted service;
+ c. modify, adapt or translate the Software, or create derivative works of it;
+ d. decompile, disassemble, decrypt or reverse engineer the Software, or try in
+    any other way to obtain its source code, model weights, algorithms,
+    prompts or training data, except to the extent that applicable law
+    expressly permits this despite this restriction;
+ e. extract the model files from the Software or use them outside it;
+ f. circumvent or disable any encryption, license check or other technical
+    protection of the Software;
+ g. use the Software or its outputs to develop, train or improve a product,
+    model or service that competes with the Software;
+ h. remove or change any notice of copyright, license or origin.
+
+4. Your data and outputs
+You keep all rights in your data and in the names the Software produces from
+it. The Software runs on your machine. In text mode with a hosted model, the
+Software sends the variable names, neighbor lines and evidence lines of your
+data to the provider you select, and that provider's terms apply to them.
+
+5. Publications
+If you publish results obtained with the Software, you must cite the
+CausalBridge paper.
+
+6. Third-party components
+Third-party components keep their own licenses, listed in
+THIRD_PARTY_NOTICES.md. Nothing in these terms limits a right that such a
+license grants.
+
+7. Termination
+This license ends automatically if you breach any of these terms. When it
+ends, you must stop using the Software and delete every copy of it.
+
+8. No warranty
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+
+9. Limitation of liability
+IN NO EVENT SHALL CAUSALBRIDGE TEAM OR ANY COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM,
+DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE
+OR OTHER DEALINGS IN THE SOFTWARE.
+
+10. Governing law
+These terms are governed by the laws of the State of California, USA, without
+regard to its conflict of laws rules.

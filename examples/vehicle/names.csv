@@ -1,0 +1,7 @@
+id,name
+steer,steering wheel angle
+wheel_fr,front right wheel speed
+acc_z,vertical acceleration
+gyro_x,roll rate
+gyro_y,pitch rate
+gyro_z,yaw rate
