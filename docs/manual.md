@@ -1,6 +1,6 @@
 # CausalBridge manual
 
-Version 0.1.0.
+Version 0.1.1.
 
 ## Contents
 
@@ -391,6 +391,7 @@ The model files of a profile are encrypted. Only CausalBridge reads them.
 | `method M is not available for time series; use boss` | use `--method boss` |
 | `the API key is not set: export VAR=<your key>` | set the key variable (section 9) |
 | `a hosted model needs --mode text and --api-model` | add both options |
+| `the GPU ran out of memory; ...` | stop the other programs that use the GPU (`nvidia-smi` lists them), or lower `name.batch`, for example `--set name.batch=8` |
 | `unknown parameter: KEY` | use a parameter from section 7 |
 | `... failed its checksum after download; nothing was kept` | run the command again; check the network |
 | input errors (`duplicate column ids`, `is not numeric`, `constant columns`, ...) | correct the file as the message says (section 4) |
