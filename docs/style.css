@@ -33,7 +33,7 @@ nav {
 }
 nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 64px; }
 .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; color: var(--ink); font-size: 18px; letter-spacing: -.01em; }
-.brand svg { width: 26px; height: 26px; }
+.brand svg { width: 34px; height: 34px; }
 .links { display: flex; align-items: center; gap: 28px; font-size: 14.5px; font-weight: 500; }
 .links a { color: var(--gray-700); }
 .links a:hover { color: var(--ink); }
