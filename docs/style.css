@@ -423,3 +423,8 @@ footer a { color: var(--gray-700); margin-left: 20px; }
   .tslide-text h3 { font-size: 24px; }
   .tslide-visual .term { height: 320px; }
 }
+
+/* university logos under the hero: official files, official colors, no change of proportions */
+.unis { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 28px 64px; margin-top: 44px; }
+.unis img { height: 40px; width: auto; display: block; }
+@media (max-width: 680px) { .unis { gap: 22px 40px; margin-top: 34px; } .unis img { height: 34px; } }
