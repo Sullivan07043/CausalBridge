@@ -21,6 +21,8 @@ frozen language model.
 
 Project page: https://sullivan07043.github.io/CausalBridge/
 
+Paper: [How Causality Bridges the Semantic Gap](https://arxiv.org/abs/2610.02594)
+
 ## Requirements
 
 - Linux on x86_64.
@@ -149,4 +151,16 @@ Third-party components keep their own licenses, listed in
 ## Citation
 
 If you publish results obtained with CausalBridge, cite the CausalBridge
-paper. The reference will appear here when the paper is public.
+paper, [How Causality Bridges the Semantic Gap](https://arxiv.org/abs/2610.02594):
+
+```bibtex
+@misc{zhang2026causalitybridgessemanticgap,
+  title={How Causality Bridges the Semantic Gap},
+  author={Shuhao Zhang and Xuran Zhou and Han Guo and Pengtao Xie and Yujia Zheng},
+  year={2026},
+  eprint={2610.02594},
+  archivePrefix={arXiv},
+  primaryClass={cs.LG},
+  url={https://arxiv.org/abs/2610.02594},
+}
+```

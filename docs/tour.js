@@ -42,7 +42,11 @@
     if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) go(cur + (dx < 0 ? 1 : -1));
     x0 = null;
   });
-  window.addEventListener("resize", function () { view.style.height = slides[cur].offsetHeight + "px"; });
+  function fit() { view.style.height = slides[cur].offsetHeight + "px"; }
+  window.addEventListener("resize", fit);
+  window.addEventListener("load", fit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  if ("ResizeObserver" in window) { var ro = new ResizeObserver(fit); slides.forEach(function (s) { ro.observe(s); }); }
   go(0);
   tour.dataset.ready = "1";
 })();
