@@ -106,6 +106,7 @@ fi
 # uninstall line above removes everything.
 export UV_PYTHON_INSTALL_DIR="${LIB}/python"
 export UV_CACHE_DIR="${LIB}/.uv-cache"
+export UV_HTTP_TIMEOUT="${UV_HTTP_TIMEOUT:-300}"     # PyTorch and its CUDA packages are large; slow links time out at the default 30 s
 
 DEST="${LIB}/versions/${VER}"
 rm -rf "${DEST}"

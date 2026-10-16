@@ -1,6 +1,6 @@
 # CausalBridge manual
 
-Version 0.2.2.
+Version 0.2.3.
 
 ## Contents
 
@@ -199,10 +199,16 @@ All input files are CSV files with a header row.
 
 - The header row holds one id per column. Ids must be unique and not empty.
 - Every value is a number. An empty cell is a missing value.
-- A row with a missing value is dropped. `run.json` records how many rows
-  were dropped.
+- For iid data, a row with a missing value is dropped. `run.json` records
+  how many rows were dropped.
+- For time series, a missing value is an error, since each row is paired with
+  the next one. Fill the missing values first.
 - A column with one constant value is an error.
 - The table needs more rows than columns.
+- Time series for discovery: column ids cannot contain `@`, a column that
+  grows by the same step in every row (a time index) is an error because the
+  row order already gives the time, and the table needs more than twice as many
+  rows as columns, plus two.
 - CausalBridge standardizes each column. You do not need to scale the data.
 
 ### Names file
@@ -232,7 +238,9 @@ speed factor,wheel_fl
 ```
 
 An id that is not a column of the data table is a latent variable. For the
-joint task, the graph needs at least one latent variable.
+joint task, the graph needs at least one latent variable. The graph needs at
+least one edge, a repeated row counts once, and the latent variables cannot
+form a directed cycle.
 
 ## 5. Output files
 
@@ -271,6 +279,13 @@ another method that fits the data, or supply your own graph with `--graph`.
 
 A method that does not fit the data kind stops with an error. Time series
 have no joint task.
+
+- `gin` handles at most 447 columns. Above 85 columns it looks for groups of
+  two columns only, and its GPU memory grows with the square of the number of
+  rows.
+- `boss` takes a column whose id starts with `action.` as an input that was
+  set at random, as in the robot data of the `sensor` profile, and adds its
+  edges to the channels it moves.
 
 ## 7. Parameters
 
@@ -361,16 +376,18 @@ causalbridge train --profile mine --from survey --data-dir my_datasets \
 ```
 
 **Training data.** `--data-dir` is a folder with one subfolder per dataset.
-Each subfolder holds three files:
+Each subfolder holds these files:
 
 | file | content |
 |---|---|
-| `data.csv` | the data table (section 4) |
+| `data.csv` | the data table (section 4), with at least 5 columns |
 | `names.csv` | a name for every column; names for latent variables of the graph are optional |
-| `graph.csv` | the causal graph of the dataset (section 4) |
+| `graph.csv` (optional) | the causal graph of the dataset (section 4) |
 
-Every column must have a name. More datasets from your domain give a better
-profile.
+Every column must have a name. Without `graph.csv`, the graph is discovered
+from the data with the default method of section 6 and kept in the profile's
+`work/graphs` folder; its latent variables have no names then. More datasets
+from your domain give a better profile.
 
 | option | default | meaning |
 |---|---|---|
@@ -395,7 +412,12 @@ profile.
    and with the backbone alone, and records how often the true name ranks
    first (top-1) and its mean reciprocal rank (MRR).
 
-The negation component comes from the starting profile.
+The negation component comes from the starting profile. A stage that
+`--only` leaves out takes its part from the starting profile. Each part is
+built on the parts before it (encoder, bank, solver, adapter), so once a part
+is trained for the new profile, every later stage has to run too; `train`
+stops with a message that names the stage to add. A finished stage is skipped
+when the same command runs again.
 
 The profile goes to `<profile-dir>/mine/`. The progress and the report are in
 `<profile-dir>/mine/train_state.json`. Use the profile with `--profile mine`.
